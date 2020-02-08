@@ -4,6 +4,6 @@ const routes = new Router();
 
 routes.get('/', (req, res) => {
   return res.json({ message: 'Its work' });
-})
+});
 
 export default routes;
