@@ -70,6 +70,14 @@ class AppointmentController {
       });
     }
 
+    const user = await User.findByPk(req.userId);
+
+    if (user.provider) {
+      return res.status(401).json({
+        error: 'Provider cannot create appointments to another provider',
+      });
+    }
+
     const hourStart = startOfHour(parseISO(date));
 
     if (isBefore(hourStart, new Date())) {
@@ -101,7 +109,6 @@ class AppointmentController {
     /**
      * Notify provider
      */
-    const user = await User.findByPk(req.userId);
     const formattedDate = format(
       hourStart,
       "'dia' dd 'de' MMMM', às' H:mm'h'",
