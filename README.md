@@ -12,25 +12,13 @@ user, create appointments for these users and send email.
 
 ### Running the project
 
-1. First need create the containers:
-
-[Postgres](https://www.postgresql.org/)
+1. First need create the containers to [Postgres](https://www.postgresql.org/),
+   [Redis](https://redis.io/) and [MongoDB](https://www.mongodb.com/):
 
 ```bash
-
 docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
-```
-
-[Redis](https://redis.io/)
-
-```bash
-  docker run --name redisgobarber -p 6379:6379 -d -t redis:alpine
-```
-
-[MongoDB](https://www.mongodb.com/)
-
-```bash
-  git clone git@bitbucket.org:unearsa/consumer-bi-europ.gitdocker run --name mongobarber -p 27017:27017 -d -t mongo
+docker run --name mongobarber -p 27017:27017 -d -t mongo
+docker run --name redisgobarber -p 6379:6379 -d -t redis:alpine
 ```
 
 2. Config the **.env** file based on **.env.example**. To config the mail settings you
