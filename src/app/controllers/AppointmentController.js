@@ -76,7 +76,7 @@ class AppointmentController {
 
     if (!isProvider) {
       return res.status(401).json({
-        error: 'You can only create appointments with provider',
+        error: 'You can only create appointments to provider',
       });
     }
 
